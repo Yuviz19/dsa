@@ -75,7 +75,7 @@ for (auto it : v){
 v.erase(v.begin()+2); // delete 3rd element
 // delete a series of elements
 v.erase(v.begin()+2, v.begin()+4); // delete from element 3rd to 4th element (last element is not included)
-
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 // insertion of element
 vector<int> v(2,100);
 v.insert(v.begin(), 300); // insert 300 at the start
