@@ -49,6 +49,33 @@ std::vector<int> better(std::vector<int> &a) {
   return {repeating, missing};
 }
 
+// optimal approach using Maths
+std::vector<int> optimalMaths(std::vector<int> &a) {
+  int n = a.size();
+  long long sN = 1LL * (n * (n + 1)) / 2;
+  long long sI = 0;
+  for (int i : a) {
+    sI += (long long)i;
+  }
+
+  long long sN2 = 1LL * (n * (n + 1) * (2 * n + 1)) / 2;
+  long long sI2 = 0;
+  for (int i : a) {
+    sI2 += ((long long)i * (long long)i);
+  }
+
+  // let X -> repeating, Y -> Missing
+  long long XminusY = sI - sN;
+  long long X2minusY2 = sI2 - sN2;
+  long long XplusY = X2minusY2 / XminusY;
+
+  long long sum = XminusY + XplusY;
+  long long x = sum / 2;
+  long long y = XplusY - x;
+
+  return {(int)x, (int)y};
+}
+
 int main(int argc, char *argv[]) {
   std::vector<int> array = {1, 2, 3, 6, 7, 5, 7};
   return 0;
